@@ -1,3 +1,3 @@
-module giles.wang/general
+module github.com/WangGiles/general
 
 go 1.20
