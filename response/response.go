@@ -25,7 +25,7 @@ func GinSuccess(c *gin.Context, data interface{}) {
 
 // GinFailure 请求失败返回
 func GinFailure(c *gin.Context, code int, data interface{}) {
-	json := &failureStruct{Code: successCode, Msg: successMsg}
+	json := &failureStruct{Code: code, Msg: data}
 
 	c.JSON(http.StatusOK, json)
 }
