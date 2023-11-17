@@ -1,5 +1,10 @@
 package response
 
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
+
 type successStruct struct {
 	Code int         `json:"code"`
 	Msg  interface{} `json:"msg"`
@@ -11,16 +16,16 @@ type failureStruct struct {
 	Msg  interface{} `json:"msg"`
 }
 
-// Success 请求成功返回
-func Success(data interface{}) *successStruct {
+// GinSuccess 请求成功返回
+func GinSuccess(c *gin.Context, data interface{}) {
 	json := &successStruct{Code: successCode, Msg: successMsg, Data: data}
 
-	return json
+	c.JSON(http.StatusOK, json)
 }
 
-// Failure 请求失败返回
-func Failure(code int, data interface{}) *failureStruct {
+// GinFailure 请求失败返回
+func GinFailure(c *gin.Context, code int, data interface{}) {
 	json := &failureStruct{Code: successCode, Msg: successMsg}
 
-	return json
+	c.JSON(http.StatusOK, json)
 }
